@@ -14,11 +14,13 @@ Easy Media Download allows you to embed download buttons on your WordPress site.
 
 [Easy Media Download](https://noorsplugin.com/easy-media-download-plugin-for-wordpress/) is a free download manager for WordPress. It gives your users the ability to download digital media files from your website. The plugin is lightweight and makes downloading easier. You can create beautiful download button which instantly starts the download once clicked.
 
-= Requirements =
+https://www.youtube.com/watch?v=zjtobdjQn44&rel=0
+
+=== Requirements ===
 
 * A self-hosted website running on [WordPress hosting](https://noorsplugin.com/best-cheap-wordpress-hosting/)
 
-= Features =
+=== Features ===
 
 * Create quick downloads
 * Free downloads for music or audio files e.g. mp3, aac, m4a, wav
@@ -39,7 +41,7 @@ Easy Media Download allows you to embed download buttons on your WordPress site.
 
 For more information please check the [Easy Media Download](https://noorsplugin.com/easy-media-download-plugin-for-wordpress/) documentation page
 
-= Embedding Shortcodes for the Downloads =
+=== Embedding Shortcodes for the Downloads ===
 
 Create a new post/page and use the following shortcode to create a download button for your digital media file:
 
@@ -73,13 +75,13 @@ By default the download starts in the same window. But you can choose to modify 
 
 `[easy_media_download url="http://example.com/wp-content/uploads/myfile.zip" target="_blank"]`  (opens the download in a new window)
 
-= Force File Download =
+=== Force File Download ===
 
 Usually when a digital file is recognised by the browser it does not prompt for download. The file just opens in the browser instead. You can choose to modify this behaviour using the `force_dl` parameter in the shortcode.
 
 `[easy_media_download url="http://example.com/wp-content/uploads/myfile.mp3" force_dl="1"]` 
 
-= Download Button Templates =
+=== Download Button Templates ===
 
 Easy Media Download comes with 21 different download button templates. All you need to do is specify the style and the button will look just like it. For example:
 
@@ -108,13 +110,13 @@ Easy Media Download comes with 21 different download button templates. All you n
 
 If you want to fully customize the download button you can use your own button image instead.
 
-= Link Rel =
+=== Link Rel ===
 
 You can use the HTML link `rel` attribute in the shortcode to define the relationship between your page and the linked download.
 
 `[easy_media_download url="http://example.com/wp-content/uploads/myfile.zip" rel="nofollow"]`
 
-= Custom CSS Class =
+=== Custom CSS Class ===
 
 In addition to various button templates, If you want to apply custom styling to a button you can do so by using the `class` parameter.
 
@@ -124,7 +126,7 @@ You can specify multiple CSS classes in the shortcode.
 
 `[easy_media_download url="http://example.com/wp-content/uploads/myfile.zip" class="myclass1 myclass2 myclass3"]`
 
-= Embedding a Donation Button for Free Download =
+=== Embedding a Donation Button for Free Download ===
 
 You can accept donations from users visiting your site for your free downloads. Simply use the following shortcode with your PayPal email address in it.
 
@@ -148,11 +150,11 @@ You can customize the donation button by specifying your preferred image in the 
 
 `[emd_donation email="abc123@hotmail.com" image="http://example.com/wp-content/uploads/images/donate.jpg"]`
 
-= Digital Download Tracking =
+=== Digital Download Tracking ===
 
 Easy Media Download is integrated with the [Google Analytics](https://wordpress.org/plugins/simple-universal-google-analytics/) plugin. It allows you to see how many times a particular file has been downloaded in real time from your Google Analytics account. 
 
-= Languages =
+=== Languages ===
 
 Easy Media Download can be translated into your languages. Currently it supports the following languages:
 
@@ -169,7 +171,7 @@ If you are a non-English speaker please help [translate Easy Media Download](htt
 
 Feel free to drop your review [here](https://wordpress.org/support/plugin/easy-media-download/reviews/?rate=5#new-post)
 
-= Recommended Reading =
+=== Recommended Reading ===
 
 * Easy Media Download [Documentation](https://noorsplugin.com/easy-media-download-plugin-for-wordpress/)
 * My Other [Free WordPress Plugins](https://noorsplugin.com/wordpress-plugins/)
