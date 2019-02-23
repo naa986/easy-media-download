@@ -1,9 +1,9 @@
 === Easy Media Download ===
 Contributors: naa986
 Donate link: https://noorsplugin.com/
-Tags: download, downloads, media, digital downloads, e-commerce, e-downloads, e-store, ecommerce, eshop, wp ecommerce, donation
+Tags: download, downloads, digital downloads, button, buttons
 Requires at least: 3.0
-Tested up to: 5.0
+Tested up to: 5.1
 Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -18,7 +18,7 @@ https://www.youtube.com/watch?v=zjtobdjQn44&rel=0
 
 === Requirements ===
 
-* A self-hosted website running on [WordPress hosting](https://noorsplugin.com/best-cheap-wordpress-hosting/)
+* A self-hosted website running on [WordPress hosting](https://noorsplugin.com/how-to-choose-the-right-wordpress-hosting/)
 
 === Features ===
 
