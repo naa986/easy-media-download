@@ -4,7 +4,7 @@ Donate link: https://noorsplugin.com/
 Tags: download, downloads, digital downloads, button, buttons
 Requires at least: 3.0
 Tested up to: 5.2
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -126,29 +126,29 @@ You can specify multiple CSS classes in the shortcode.
 
 `[easy_media_download url="http://example.com/wp-content/uploads/myfile.zip" class="myclass1 myclass2 myclass3"]`
 
-=== Embedding a Donation Button for Free Download ===
+=== Easy Media Download Shortcode 2 ===
 
-You can accept donations from users visiting your site for your free downloads. Simply use the following shortcode with your PayPal email address in it.
+With this shortcode, you can create a download button with your preferred color.
 
-`[emd_donation email="abc123@hotmail.com"]`
+`[easy_media_download2 url="http://example.com/wp-content/uploads/myfile.zip" text="Free Download" bg_color="#CC0000"]`
 
-**Donation Currency**
+**Background Color**
 
-The default currency is "USD". But you can also accept payments in your preferred currency using the "currency" parameter.
+The background color of the download button is "#3498db" by default. You can customize it using the "bg_color" parameter.
 
-`[emd_donation email="abc123@hotmail.com" currency="CAD"]` (This will set the currency to Canadian Dollar)
+`[easy_media_download2 url="http://example.com/wp-content/uploads/myfile.zip" bg_color="#CC0000"]`
 
-**Payment Page Language**
+**Font Color**
 
-The default locale for the payment page is "US". But you can set it to your preferred language using the "locale" parameter.
+The font color of the download button is "#ffffff" by default. You can customize it using the "font_color" parameter.
 
-`[emd_donation email="abc123@hotmail.com" locale="BE"]` (This will set the locale to Belgium)
+`[easy_media_download2 url="http://example.com/wp-content/uploads/myfile.zip" text="Free Download" font_color="#71B02F"]`
 
-**Donation Button Image**
+**Hover Background Color**
 
-You can customize the donation button by specifying your preferred image in the shortcode.
+The "hover_bg_color" parameter can be used to change the background color of the download button when you mouse over it.
 
-`[emd_donation email="abc123@hotmail.com" image="http://example.com/wp-content/uploads/images/donate.jpg"]`
+`[easy_media_download2 url="http://example.com/wp-content/uploads/myfile.zip" text="Free Download" bg_color="#3498db" hover_bg_color="#3cb0fd"]`
 
 === Digital Download Tracking ===
 
@@ -205,6 +205,9 @@ Yes.
 none
 
 == Changelog ==
+
+= 1.1.4 =
+* Added a new shortcode that can create a button with any color.
 
 = 1.1.3 =
 * Added a new parameter to support the HTML link rel attribute in the download button.

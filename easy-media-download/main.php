@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Easy Media Download
-Version: 1.1.3
+Version: 1.1.4
 Plugin URI: https://noorsplugin.com/easy-media-download-plugin-for-wordpress/
 Author: naa986
 Author URI: https://noorsplugin.com/
@@ -15,7 +15,7 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
 {
     class EASY_MEDIA_DOWNLOAD
     {
-        var $plugin_version = '1.1.3';
+        var $plugin_version = '1.1.4';
         var $plugin_url;
         var $plugin_path;
         function __construct()
@@ -34,6 +34,7 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
             add_action('plugins_loaded', array($this, 'plugins_loaded_handler'), 10, 2 );
             add_action('admin_menu', array($this, 'add_options_menu'));
             add_shortcode('easy_media_download','easy_media_download_handler');
+            add_shortcode('easy_media_download2','easy_media_download2_handler');
             add_shortcode('emd_donation','easy_media_download_donation_handler');
         }
         function plugin_url()
@@ -222,6 +223,73 @@ function easy_media_download_handler($atts)
     </style>
 EOT;
 
+    $css_class = '';       
+    if(preg_match("/http/", $text)){
+        if(!empty($class)){
+            $css_class = ' class="'.$class.'"';
+        }
+        $text = '<img src="'.$text.'">';
+    }
+    else{
+        if(!empty($class)){
+            $class = ' '.$class;
+        }
+        $css_class = ' class="'.$core_class.$class.'"';
+    }
+    if(isset($rel) && !empty($rel)){
+        $rel = ' rel="'.$rel.'"';
+    }
+    if($force_dl=="1"){
+        $force_dl = " download";
+    }
+    $custom_attr = apply_filters('emd_custom_link_attributes', '', $url);
+    $output = <<<EOT
+    <a href="$url" target="$target"{$rel}{$css_class}{$force_dl}{$custom_attr}>$text</a>
+    $styles
+EOT;
+    return $output;
+}
+
+function easy_media_download2_handler($atts)
+{
+    extract(shortcode_atts(array(
+        'url' => '',
+        'text' => 'Download Now',
+        'bg_color' => '#3498db',
+        'font_color' => '#ffffff',
+        'hover_bg_color' => '',
+        'font_size' => '15px',
+        'target' => '_self',
+        'force_dl' => '',
+        'rel' => '',
+        'class' => '',
+    ), $atts));
+    if(isset($hover_bg_color) && !empty($hover_bg_color)){
+        $hover_bg_color = 'background: '.$hover_bg_color.' !important;';
+    }
+    $id = uniqid();
+    $core_class = "emd_".$id;
+    $styles = <<<EOT
+    <style type="text/css">
+    .$core_class {
+        font-family: Georgia !important;
+        color: {$font_color} !important;
+        font-size: {$font_size} !important;
+        font-weight: bold !important;
+        background: {$bg_color} !important;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+    }
+    .$core_class:hover {
+        color: {$font_color} !important;
+        text-decoration: none !important;
+        $hover_bg_color
+    }
+    </style>    
+EOT;
+        
     $css_class = '';       
     if(preg_match("/http/", $text)){
         if(!empty($class)){
