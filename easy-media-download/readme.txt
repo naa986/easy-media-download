@@ -124,7 +124,7 @@ In addition to various button templates, If you want to apply custom styling to 
 
 You can specify multiple CSS classes in the shortcode.
 
-`[easy_media_download url="http://example.com/wp-content/uploads/myfile.zip" class="myclass1 myclass2 myclass3"]`
+[easy_media_download url="http://example.com/wp-content/uploads/myfile.zip" class="myclass1 myclass2 myclass3"]
 
 === Easy Media Download Shortcode 2 ===
 
@@ -148,7 +148,7 @@ The font color of the download button is "#ffffff" by default. You can customize
 
 The "hover_bg_color" parameter can be used to change the background color of the download button when you mouse over it.
 
-`[easy_media_download2 url="http://example.com/wp-content/uploads/myfile.zip" text="Free Download" bg_color="#3498db" hover_bg_color="#3cb0fd"]`
+[easy_media_download2 url="http://example.com/wp-content/uploads/myfile.zip" text="Free Download" bg_color="#3498db" hover_bg_color="#3cb0fd"]
 
 === Digital Download Tracking ===
 
