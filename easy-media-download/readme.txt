@@ -4,7 +4,7 @@ Donate link: https://noorsplugin.com/
 Tags: download, downloads, digital downloads, button, buttons
 Requires at least: 3.0
 Tested up to: 5.5
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,6 @@ https://www.youtube.com/watch?v=zjtobdjQn44&rel=0
 * Free downloads for document file e.g. doc, docx (OpenOffice, Microsoft Word), odt (OpenDocument), htm, html, ps, tex, xml, txt, csv
 * Allow large file download (No limit on the file size)
 * Free downloads for Office file e.g. xlsx (Microsoft Excel), pptx (Microsoft PowerPoint)
-* Accept donations for your free digital downloads using PayPal
 * Free downloads for script e.g. js, css, php
 * Track/Monitor your downloads
 * Free downloads for archive or compressed file e.g. tar, rar, zip, 7z, gz, z
@@ -193,10 +192,6 @@ Yes.
 
 Yes.
 
-= Can I accept donations for my digital downloads? =
-
-Yes.
-
 == Screenshots ==
 
 1. Download Now button demo
@@ -205,6 +200,9 @@ Yes.
 none
 
 == Changelog ==
+
+= 1.1.5 =
+* Made some security related improvements in the plugin.
 
 = 1.1.4 =
 * Added a new shortcode that can create a button with any color.

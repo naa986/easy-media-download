@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Easy Media Download
-Version: 1.1.4
+Version: 1.1.5
 Plugin URI: https://noorsplugin.com/easy-media-download-plugin-for-wordpress/
 Author: naa986
 Author URI: https://noorsplugin.com/
@@ -15,7 +15,7 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
 {
     class EASY_MEDIA_DOWNLOAD
     {
-        var $plugin_version = '1.1.4';
+        var $plugin_version = '1.1.5';
         var $plugin_url;
         var $plugin_path;
         function __construct()
@@ -35,7 +35,6 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
             add_action('admin_menu', array($this, 'add_options_menu'));
             add_shortcode('easy_media_download','easy_media_download_handler');
             add_shortcode('easy_media_download2','easy_media_download2_handler');
-            add_shortcode('emd_donation','easy_media_download_donation_handler');
         }
         function plugin_url()
         {
@@ -76,7 +75,7 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
 
 function easy_media_download_handler($atts)
 {
-    extract(shortcode_atts(array(
+    $atts = shortcode_atts(array(
         'url' => '',
         'text' => 'Download Now',
         'width' => '153',
@@ -86,7 +85,21 @@ function easy_media_download_handler($atts)
         'force_dl' => '',
         'rel' => '',
         'class' => '',
-    ), $atts));
+    ), $atts);
+    $atts = array_map('sanitize_text_field', $atts);
+    if(empty($atts['url'])){
+        return __('Please specify the URL of your file', 'easy-media-download');
+    }   
+    $url = $atts['url'];
+    $text = $atts['text']; 
+    $width = $atts['width'];
+    $height = $atts['height'];
+    $color = $atts['color'];
+    $target = $atts['target'];
+    $force_dl = $atts['force_dl'];
+    $rel = $atts['rel'];
+    $class = $atts['class'];
+    
     $core_class = "emd_dl_".$color;
     $inset = "f5978e";
     $start_color = "f24537";
@@ -252,7 +265,7 @@ EOT;
 
 function easy_media_download2_handler($atts)
 {
-    extract(shortcode_atts(array(
+    $atts = shortcode_atts(array(
         'url' => '',
         'text' => 'Download Now',
         'bg_color' => '#3498db',
@@ -263,7 +276,22 @@ function easy_media_download2_handler($atts)
         'force_dl' => '',
         'rel' => '',
         'class' => '',
-    ), $atts));
+    ), $atts);
+    $atts = array_map('sanitize_text_field', $atts);
+    if(empty($atts['url'])){
+        return __('Please specify the URL of your file', 'easy-media-download');
+    }   
+    $url = $atts['url'];
+    $text = $atts['text']; 
+    $bg_color = $atts['bg_color'];
+    $font_color = $atts['font_color'];
+    $hover_bg_color = $atts['hover_bg_color'];
+    $font_size = $atts['font_size'];
+    $target = $atts['target'];
+    $force_dl = $atts['force_dl'];
+    $rel = $atts['rel'];
+    $class = $atts['class'];
+    
     if(isset($hover_bg_color) && !empty($hover_bg_color)){
         $hover_bg_color = 'background: '.$hover_bg_color.' !important;';
     }
@@ -317,30 +345,3 @@ EOT;
     return $output;
 }
 
-function easy_media_download_donation_handler($atts)
-{
-    extract(shortcode_atts(array(
-        'email' => '',
-        'currency' => 'USD',
-        'image' => '',
-        'locale' => 'US',
-    ), $atts));
-    if(empty($email)){
-        return __('Please specify the PayPal email address which will receive the payments', 'easy-media-download');
-    }
-    if(empty($image)){
-        $image = EASY_MEDIA_DOWNLOAD_URL."/images/donate.gif";
-    }
-    $output = <<<EOT
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    <input type="hidden" name="cmd" value="_donations">
-    <input type="hidden" name="business" value="$email">
-    <input type="hidden" name="lc" value="$locale">
-    <input type="hidden" name="no_note" value="0">
-    <input type="hidden" name="currency_code" value="$currency">
-    <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
-    <input type="image" src="$image" name="submit">
-    </form>
-EOT;
-    return $output;
-}
