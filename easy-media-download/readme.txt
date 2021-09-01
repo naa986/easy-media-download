@@ -4,7 +4,7 @@ Donate link: https://noorsplugin.com/
 Tags: download, downloads, digital downloads, button, buttons
 Requires at least: 3.0
 Tested up to: 5.8
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,10 +15,6 @@ Easy Media Download allows you to embed download buttons on your WordPress site.
 [Easy Media Download](https://noorsplugin.com/easy-media-download-plugin-for-wordpress/) is a free download manager for WordPress. It gives your users the ability to download digital media files from your website. The plugin is lightweight and makes downloading easier. You can create beautiful download button which instantly starts the download once clicked.
 
 https://www.youtube.com/watch?v=zjtobdjQn44&rel=0
-
-=== Requirements ===
-
-* A self-hosted website running on [WordPress hosting](https://noorsplugin.com/how-to-choose-the-right-wordpress-hosting/)
 
 === Features ===
 
@@ -200,6 +196,9 @@ Yes.
 none
 
 == Changelog ==
+
+= 1.1.6 =
+* Fixed a security issue in the plugin. The vulnerability was reported by wpscan.com.
 
 = 1.1.5 =
 * Made some security related improvements in the plugin.
