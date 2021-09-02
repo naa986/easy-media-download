@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Easy Media Download
-Version: 1.1.6
+Version: 1.1.7
 Plugin URI: https://noorsplugin.com/easy-media-download-plugin-for-wordpress/
 Author: naa986
 Author URI: https://noorsplugin.com/
@@ -15,7 +15,7 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
 {
     class EASY_MEDIA_DOWNLOAD
     {
-        var $plugin_version = '1.1.6';
+        var $plugin_version = '1.1.7';
         var $plugin_url;
         var $plugin_path;
         function __construct()
@@ -239,7 +239,7 @@ EOT;
     $css_class = '';       
     if(preg_match("/http/", $text)){
         if(!empty($class)){
-            $css_class = ' class="'.$class.'"';
+            $css_class = ' class="'.esc_attr($class).'"';
         }
         $text = '<img src="'.esc_url($text).'">';
     }
@@ -247,17 +247,25 @@ EOT;
         if(!empty($class)){
             $class = ' '.$class;
         }
-        $css_class = ' class="'.$core_class.$class.'"';
+        $css_class = ' class="'.esc_attr($core_class.$class).'"';
+        $text = esc_html($text);
     }
     if(isset($rel) && !empty($rel)){
-        $rel = ' rel="'.$rel.'"';
+        $rel = ' rel="'.esc_attr($rel).'"';
+    }
+    else{
+        $rel = '';
     }
     if($force_dl=="1"){
         $force_dl = " download";
     }
-    $custom_attr = apply_filters('emd_custom_link_attributes', '', $url);
-    $output = <<<EOT
-    <a href="$url" target="$target"{$rel}{$css_class}{$force_dl}{$custom_attr}>$text</a>
+    else{
+        $force_dl = '';
+    }
+    $custom_attr = apply_filters('emd_custom_link_attributes', '', esc_url_raw($url));
+    $output = 
+    '<a href="'.esc_url($url).'" target="'.esc_attr($target).'"'.$rel.$css_class.$force_dl.$custom_attr.'>'.$text.'</a>';
+    $output .= <<<EOT
     $styles
 EOT;
     return $output;
@@ -321,7 +329,7 @@ EOT;
     $css_class = '';       
     if(preg_match("/http/", $text)){
         if(!empty($class)){
-            $css_class = ' class="'.$class.'"';
+            $css_class = ' class="'.esc_attr($class).'"';
         }
         $text = '<img src="'.esc_url($text).'">';
     }
@@ -329,17 +337,25 @@ EOT;
         if(!empty($class)){
             $class = ' '.$class;
         }
-        $css_class = ' class="'.$core_class.$class.'"';
+        $css_class = ' class="'.esc_attr($core_class.$class).'"';
+        $text = esc_html($text);
     }
     if(isset($rel) && !empty($rel)){
-        $rel = ' rel="'.$rel.'"';
+        $rel = ' rel="'.esc_attr($rel).'"';
+    }
+    else{
+        $rel = '';
     }
     if($force_dl=="1"){
         $force_dl = " download";
     }
-    $custom_attr = apply_filters('emd_custom_link_attributes', '', $url);
-    $output = <<<EOT
-    <a href="$url" target="$target"{$rel}{$css_class}{$force_dl}{$custom_attr}>$text</a>
+    else{
+        $force_dl = '';
+    }
+    $custom_attr = apply_filters('emd_custom_link_attributes', '', esc_url_raw($url));
+    $output = 
+    '<a href="'.esc_url($url).'" target="'.esc_attr($target).'"'.$rel.$css_class.$force_dl.$custom_attr.'>'.$text.'</a>';
+    $output .= <<<EOT
     $styles
 EOT;
     return $output;
