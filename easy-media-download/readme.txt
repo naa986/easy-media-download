@@ -4,7 +4,7 @@ Donate link: https://noorsplugin.com/
 Tags: download, downloads, digital downloads, button, buttons
 Requires at least: 3.0
 Tested up to: 5.9
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,11 @@ https://www.youtube.com/watch?v=zjtobdjQn44&rel=0
 * Free downloads for image file e.g. png, gif, jpg, jpeg, bmp
 * Open the download in a new tab
 * Free downloads for e-book e.g. pdf, epub
+* Make a download button accessible to logged in users only
+
+=== Easy Media Download Extensions ===
+
+* [User Only Download](https://noorsplugin.com/how-to-show-a-download-button-to-logged-in-users-only/)
 
 For more information please check the [Easy Media Download](https://noorsplugin.com/easy-media-download-plugin-for-wordpress/) documentation page
 
@@ -196,6 +201,9 @@ Yes.
 none
 
 == Changelog ==
+
+= 1.1.8 =
+* Added support for the user only download option.
 
 = 1.1.7 =
 * Fixed a security issue in the plugin. The vulnerability was reported by wpscan.com.

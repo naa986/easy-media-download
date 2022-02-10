@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Easy Media Download
-Version: 1.1.7
+Version: 1.1.8
 Plugin URI: https://noorsplugin.com/easy-media-download-plugin-for-wordpress/
 Author: naa986
 Author URI: https://noorsplugin.com/
@@ -15,7 +15,7 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
 {
     class EASY_MEDIA_DOWNLOAD
     {
-        var $plugin_version = '1.1.7';
+        var $plugin_version = '1.1.8';
         var $plugin_url;
         var $plugin_path;
         function __construct()
@@ -30,6 +30,7 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
         {
             if (is_admin()) {
                 add_filter('plugin_action_links', array($this, 'plugin_action_links'), 10, 2);
+                include_once('extensions/easy-media-download-extensions.php');
             }
             add_action('plugins_loaded', array($this, 'plugins_loaded_handler'), 10, 2 );
             add_action('admin_menu', array($this, 'add_options_menu'));
@@ -61,13 +62,98 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
             }
         }
         function options_page() {
+            $plugin_tabs = array(
+                'easy-media-download-settings' => __('General', 'easy-media-download'),
+                'easy-media-download-settings&action=extensions' => __('Extensions', 'easy-media-download')
+            );
             $url = "https://noorsplugin.com/easy-media-download-plugin-for-wordpress/";
-            $link_text = sprintf(wp_kses(__('For detailed documentation please visit the plugin homepage <a target="_blank" href="%s">here</a>.', 'easy-media-download'), array('a' => array('href' => array(), 'target' => array()))), esc_url($url));
+            $link_text = sprintf(wp_kses(__('Please visit the <a target="_blank" href="%s">Easy Media Download</a> documentation page for usage instructions.', 'easy-media-download'), array('a' => array('href' => array(), 'target' => array()))), esc_url($url));          
+            echo '<div class="wrap">';               
+            echo '<h2>Easy Media Download - v'.$this->plugin_version.'</h2>';
+            echo '<div class="notice notice-info">'.$link_text.'</div>';
+            echo '<div id="poststuff"><div id="post-body">';
+
+            if (isset($_GET['page'])) {
+                $current = sanitize_text_field($_GET['page']);
+                if (isset($_GET['action'])) {
+                    $current .= "&action=" . sanitize_text_field($_GET['action']);
+                }
+            }
+            $content = '';
+            $content .= '<h2 class="nav-tab-wrapper">';
+            foreach ($plugin_tabs as $location => $tabname) {
+                if ($current == $location) {
+                    $class = ' nav-tab-active';
+                } else {
+                    $class = '';
+                }
+                $content .= '<a class="nav-tab' . $class . '" href="?page=' . $location . '">' . $tabname . '</a>';
+            }
+            $content .= '</h2>';
+            echo $content;
+
+            if(isset($_GET['action']))
+            { 
+                switch ($_GET['action'])
+                {
+                    case 'extensions':
+                        easy_media_download_display_extensions();
+                        break;
+                }
+            }
+            else
+            {
+                $this->general_settings();
+            }
+
+            echo '</div></div>';
+            echo '</div>';
+        }
+
+        function general_settings() 
+        {
+            if (isset($_POST['easy_media_download_update_settings'])) {
+                $nonce = sanitize_text_field($_REQUEST['_wpnonce']);
+                if (!wp_verify_nonce($nonce, 'easy_media_download_general_settings_nonce')) {
+                    wp_die(__('Error! Nonce Security Check Failed! please save the general settings again.', 'easy-media-download'));
+                }
+                $post = $_POST;
+                do_action('easy_media_download_general_settings_submitted', $post);
+                echo '<div id="message" class="updated fade"><p><strong>';
+                echo __('Settings Saved', 'easy-media-download').'!';
+                echo '</strong></p></div>';
+            }
+            $settings_fields = '';
+            $settings_fields = apply_filters('easy_media_download_general_settings_fields', $settings_fields);
+            if(!empty($settings_fields)){
+                           
             ?>
-            <div class="wrap"><h2>Easy Media Download - v<?php echo $this->plugin_version; ?></h2>
-            <div class="update-nag"><?php echo $link_text;?></div>
-            </div>
+            <table class="emd-general-settings-table">
+                <tbody>
+                    <tr>
+                        <td valign="top">
+                            <form method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>">
+                                <?php wp_nonce_field('easy_media_download_general_settings_nonce'); ?>
+                                <table class="form-table">
+
+                                    <tbody>
+                                        <?php
+                                            
+                                            echo $settings_fields;
+
+                                        ?>
+                                    </tbody>
+
+                                </table>
+
+                                <p class="submit"><input type="submit" name="easy_media_download_update_settings" id="easy_media_download_update_settings" class="button button-primary" value="<?Php _e('Save Changes', 'easy-media-download');?>"></p>
+                            </form>
+                        </td>
+                    </tr>  
+                </tbody> 
+            </table>        
             <?php
+            }
         }
     }
     $GLOBALS['easy_media_download'] = new EASY_MEDIA_DOWNLOAD();
