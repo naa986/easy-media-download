@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Easy Media Download
-Version: 1.1.8
+Version: 1.1.9
 Plugin URI: https://noorsplugin.com/easy-media-download-plugin-for-wordpress/
 Author: naa986
 Author URI: https://noorsplugin.com/
@@ -15,7 +15,7 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
 {
     class EASY_MEDIA_DOWNLOAD
     {
-        var $plugin_version = '1.1.8';
+        var $plugin_version = '1.1.9';
         var $plugin_url;
         var $plugin_path;
         function __construct()
@@ -171,6 +171,7 @@ function easy_media_download_handler($atts)
         'force_dl' => '',
         'rel' => '',
         'class' => '',
+        'parent_class' => '',
     ), $atts);
     $atts = array_map('sanitize_text_field', $atts);
     if(empty($atts['url'])){
@@ -185,6 +186,7 @@ function easy_media_download_handler($atts)
     $force_dl = $atts['force_dl'];
     $rel = $atts['rel'];
     $class = $atts['class'];
+    $parent_class = $atts['parent_class'];
     
     $core_class = "emd_dl_".$color;
     $inset = "f5978e";
@@ -350,7 +352,7 @@ EOT;
     }
     $custom_attr = apply_filters('emd_custom_link_attributes', '', esc_url_raw($url));
     $output = 
-    '<a href="'.esc_url($url).'" target="'.esc_attr($target).'"'.$rel.$css_class.$force_dl.$custom_attr.'>'.$text.'</a>';
+    '<div class="'.esc_attr($parent_class).'"><a href="'.esc_url($url).'" target="'.esc_attr($target).'"'.$rel.$css_class.$force_dl.$custom_attr.'>'.$text.'</a></div>';
     $output .= <<<EOT
     $styles
 EOT;
@@ -370,6 +372,7 @@ function easy_media_download2_handler($atts)
         'force_dl' => '',
         'rel' => '',
         'class' => '',
+        'parent_class' => '',
     ), $atts);
     $atts = array_map('sanitize_text_field', $atts);
     if(empty($atts['url'])){
@@ -385,6 +388,7 @@ function easy_media_download2_handler($atts)
     $force_dl = $atts['force_dl'];
     $rel = $atts['rel'];
     $class = $atts['class'];
+    $parent_class = $atts['parent_class'];
     
     if(isset($hover_bg_color) && !empty($hover_bg_color)){
         $hover_bg_color = 'background: '.$hover_bg_color.' !important;';
@@ -440,7 +444,7 @@ EOT;
     }
     $custom_attr = apply_filters('emd_custom_link_attributes', '', esc_url_raw($url));
     $output = 
-    '<a href="'.esc_url($url).'" target="'.esc_attr($target).'"'.$rel.$css_class.$force_dl.$custom_attr.'>'.$text.'</a>';
+    '<div class="'.esc_attr($parent_class).'"><a href="'.esc_url($url).'" target="'.esc_attr($target).'"'.$rel.$css_class.$force_dl.$custom_attr.'>'.$text.'</a></div>';
     $output .= <<<EOT
     $styles
 EOT;

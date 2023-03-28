@@ -3,8 +3,8 @@ Contributors: naa986
 Donate link: https://noorsplugin.com/
 Tags: download, downloads, digital downloads, button, buttons
 Requires at least: 3.0
-Tested up to: 6.1
-Stable tag: 1.1.8
+Tested up to: 6.2
+Stable tag: 1.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -126,6 +126,10 @@ You can specify multiple CSS classes in the shortcode.
 
 [easy_media_download url="http://example.com/wp-content/uploads/myfile.zip" class="myclass1 myclass2 myclass3"]
 
+The container that encloses the button can be targeted using the parent_class parameter in the shortcode.
+
+[easy_media_download url="http://example.com/wp-content/uploads/myfile.zip" parent_class="blockclass1"]
+
 === Easy Media Download Shortcode 2 ===
 
 With this shortcode, you can create a download button with your preferred color.
@@ -201,6 +205,9 @@ Yes.
 none
 
 == Changelog ==
+
+= 1.1.9 =
+* Added containers for the download buttons.
 
 = 1.1.8 =
 * Added support for the user only download option.
