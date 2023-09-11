@@ -4,7 +4,7 @@ Donate link: https://noorsplugin.com/
 Tags: download, downloads, digital downloads, button, buttons
 Requires at least: 3.0
 Tested up to: 6.3
-Stable tag: 1.1.9
+Stable tag: 1.1.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -205,6 +205,9 @@ Yes.
 none
 
 == Changelog ==
+
+= 1.1.10 =
+* Additional check for the settings link.
 
 = 1.1.9 =
 * Added containers for the download buttons.
