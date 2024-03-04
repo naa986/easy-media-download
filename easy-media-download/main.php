@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Easy Media Download
-Version: 1.1.10
+Version: 1.1.11
 Plugin URI: https://noorsplugin.com/easy-media-download-plugin-for-wordpress/
 Author: naa986
 Author URI: https://noorsplugin.com/
@@ -15,7 +15,7 @@ if(!class_exists('EASY_MEDIA_DOWNLOAD'))
 {
     class EASY_MEDIA_DOWNLOAD
     {
-        var $plugin_version = '1.1.10';
+        var $plugin_version = '1.1.11';
         var $plugin_url;
         var $plugin_path;
         function __construct()
@@ -369,6 +369,7 @@ function easy_media_download2_handler($atts)
         'bg_color' => '#3498db',
         'font_color' => '#ffffff',
         'hover_bg_color' => '',
+        'font_family' => '',
         'font_size' => '15px',
         'target' => '_self',
         'force_dl' => '',
@@ -385,6 +386,7 @@ function easy_media_download2_handler($atts)
     $bg_color = $atts['bg_color'];
     $font_color = $atts['font_color'];
     $hover_bg_color = $atts['hover_bg_color'];
+    $font_family = $atts['font_family'];
     $font_size = $atts['font_size'];
     $target = $atts['target'];
     $force_dl = $atts['force_dl'];
@@ -395,12 +397,15 @@ function easy_media_download2_handler($atts)
     if(isset($hover_bg_color) && !empty($hover_bg_color)){
         $hover_bg_color = 'background: '.$hover_bg_color.' !important;';
     }
+    if(!isset($font_family) || empty($font_family)){
+        $font_family = 'Georgia';
+    }
     $id = uniqid();
     $core_class = "emd_".$id;
     $styles = <<<EOT
     <style type="text/css">
     .$core_class {
-        font-family: Georgia !important;
+        font-family: {$font_family} !important;
         color: {$font_color} !important;
         font-size: {$font_size} !important;
         font-weight: bold !important;

@@ -4,7 +4,7 @@ Donate link: https://noorsplugin.com/
 Tags: download, downloads, digital downloads, button, buttons
 Requires at least: 3.0
 Tested up to: 6.4
-Stable tag: 1.1.10
+Stable tag: 1.1.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -150,6 +150,18 @@ The "hover_bg_color" parameter can be used to change the background color of the
 
 `[easy_media_download2 url="https://example.com/wp-content/uploads/myfile.zip" text="Free Download" bg_color="#3498db" hover_bg_color="#3cb0fd"]`
 
+**Font Family**
+
+The font family of the download button is "Georgia" by default. You can customize it using the "font_family" parameter.
+
+`[easy_media_download2 url="https://example.com/wp-content/uploads/myfile.zip" text="Free Download" font_family="sans-serif"]`
+
+**Font Size**
+
+The size of font is "15px" by default. You can customize it using the "font_size" parameter.
+
+`[easy_media_download2 url="https://example.com/wp-content/uploads/myfile.zip" text="Free Download" font_size="20px"]`
+
 For more information please check the [Easy Media Download](https://noorsplugin.com/easy-media-download-plugin-for-wordpress/) documentation page
 
 === Languages ===
@@ -181,6 +193,11 @@ Yes.
 none
 
 == Changelog ==
+
+== Changelog ==
+
+= 1.1.11 =
+* Added a parameter in the easy_media_download2 shortcode to customize the font family.
 
 = 1.1.10 =
 * Additional check for the settings link.
