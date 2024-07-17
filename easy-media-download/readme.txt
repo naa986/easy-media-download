@@ -3,10 +3,10 @@ Contributors: naa986
 Donate link: https://noorsplugin.com/
 Tags: download, downloads, digital downloads, button, buttons
 Requires at least: 3.0
-Tested up to: 6.5
+Tested up to: 6.6
 Stable tag: 1.1.11
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Easy Media Download allows you to embed download buttons on your WordPress site. Add file download functionality with this WordPress download plugin.
 
