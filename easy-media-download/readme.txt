@@ -3,8 +3,8 @@ Contributors: naa986
 Donate link: https://noorsplugin.com/
 Tags: download, downloads, digital downloads, button, buttons
 Requires at least: 3.0
-Tested up to: 6.8
-Stable tag: 1.1.11
+Tested up to: 6.9
+Stable tag: 1.1.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -195,6 +195,9 @@ none
 == Changelog ==
 
 == Changelog ==
+
+= 1.1.12 =
+* Improved sanitization of the width and height parameters.
 
 = 1.1.11 =
 * Added a parameter in the easy_media_download2 shortcode to customize the font family.

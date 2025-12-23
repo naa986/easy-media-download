@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Easy Media Download
-Version: 1.1.11
+Version: 1.1.12
 Plugin URI: https://noorsplugin.com/easy-media-download-plugin-for-wordpress/
 Author: naa986
 Author URI: https://noorsplugin.com/
@@ -181,8 +181,8 @@ function easy_media_download_handler($atts)
     }   
     $url = $atts['url'];
     $text = $atts['text']; 
-    $width = $atts['width'];
-    $height = $atts['height'];
+    $width = absint($atts['width']);
+    $height = absint($atts['height']);
     $color = $atts['color'];
     $target = $atts['target'];
     $force_dl = $atts['force_dl'];
@@ -277,8 +277,9 @@ function easy_media_download_handler($atts)
     {
         $inset = "f4cafc";$start_color = "eea1fc";$end_color = "d441ee";$border = "dd5df4";$dl_color = "ffffff";$text_shadow = "b63dcc";
     }
-    $styles = <<<EOT
-    <style type="text/css">
+    
+    $temp_styles = <<<EOT
+            
     .$core_class {
         -moz-box-shadow:inset 0px 1px 0px 0px #$inset;
         -webkit-box-shadow:inset 0px 1px 0px 0px #$inset;
@@ -323,9 +324,12 @@ function easy_media_download_handler($atts)
         position:relative;
         top:1px;
     }
-    </style>
 EOT;
 
+    $styles = '<style>'
+    .strip_tags($temp_styles).
+    '</style>';
+            
     $css_class = '';       
     if(preg_match("/http/", $text)){
         if(!empty($class)){
@@ -402,8 +406,9 @@ function easy_media_download2_handler($atts)
     }
     $id = uniqid();
     $core_class = "emd_".$id;
-    $styles = <<<EOT
-    <style type="text/css">
+    
+    $temp_styles = <<<EOT
+            
     .$core_class {
         font-family: {$font_family} !important;
         color: {$font_color} !important;
@@ -420,9 +425,12 @@ function easy_media_download2_handler($atts)
         text-decoration: none !important;
         $hover_bg_color
     }
-    </style>    
 EOT;
-        
+
+    $styles = '<style>'
+    .strip_tags($temp_styles).
+    '</style>';
+    
     $css_class = '';       
     if(preg_match("/http/", $text)){
         if(!empty($class)){
